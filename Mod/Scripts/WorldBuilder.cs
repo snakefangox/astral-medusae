@@ -26,15 +26,24 @@ namespace SnakefangoxAstralMedusae
             BuildManubriumTrail(highSkyZoneID);
 
             string medusaeZoneID = The.ZoneManager.GetZoneFromIDAndDirection(highSkyZoneID, "U");
-            The.ZoneManager.AddZoneBuilder(medusaeZoneID, 6000, "MapBuilder", "FileName", "MeduaseGastro.rpm", "ClearChasms", true);
-            The.ZoneManager.SetZoneName(medusaeZoneID, "sky", "medusae", Article: "the");
+            for (int i = 1; i <= 3; i++)
+            {
+                BuildMedusaeBody(medusaeZoneID, i);
+                medusaeZoneID = The.ZoneManager.GetZoneFromIDAndDirection(medusaeZoneID, "U");
+            }
 
             builder.AddSecret(zoneID, "trailing manubrium", new string[3] { "encounter", "special", "oddity" }, "Oddities", "$snakefangox_astralmedusae_trailingmanubrium");
         }
 
+        private static void BuildMedusaeBody(string medusaeZoneID, int i)
+        {
+            The.ZoneManager.AddZoneBuilder(medusaeZoneID, 6000, "MapBuilder", "FileName", $"Snakefangox_AstralMedusae_MedusaeBodyLv{i}.rpm", "ClearChasms", true);
+            The.ZoneManager.SetZoneProperty(medusaeZoneID, "DisableForcedConnections", "Yes");
+            The.ZoneManager.SetZoneName(medusaeZoneID, "sky", "medusae", Article: "the");
+        }
+
         private static void BuildManubriumTrail(string lowSkyZoneID)
         {
-            The.ZoneManager.AddZoneBuilder(lowSkyZoneID, 6000, "Sky");
             The.ZoneManager.AddZonePostBuilder(lowSkyZoneID, "AddWidgetBuilder", "Blueprint", "Snakefangox_AstralMedusae_ManubriumSpawner");
             The.ZoneManager.SetZoneName(lowSkyZoneID, "sky", "medusae underbelly", Article: "the");
         }
