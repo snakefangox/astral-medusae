@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<objects>
+    <object Name="Snakefangox_AstralMedusae_MedusaeShipHull" Inherits="BaseWallCyber">
+        <part Name="Physics" Weight="100" />
+        <part Name="Render" DisplayName="slick metal hull plating" ColorString="&amp;K^m" TileColor="&amp;K" DetailColor="m" />
+        <part Name="Description" Short="A slice of alien armor, standing proud. Light slips off =pronouns.possessive= perfect edges and pools in the basin of =pronouns.possessive= curve." />
+        <removepart Name="Graffitied" />
+    </object>
+</objects>
