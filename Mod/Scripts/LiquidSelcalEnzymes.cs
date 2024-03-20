@@ -85,9 +85,7 @@ namespace XRL.Liquids
 
         private static void RendMind(LiquidVolume Liquid, GameObject Target, GameObject By = null)
         {
-            int pv = Liquid.GetLiquidExposureMillidrams(Target, "selcalenzymes") / 1000;
-            if (Target.IsPlayer())
-                Popup.Show("pv: " + pv);
+            int pv = Liquid.GetLiquidExposureMillidrams(Target, "selcalenzymes") / 500;
             int pens = Stat.RollDamagePenetrations(Stats.GetCombatMA(Target), pv, pv);
             int totalDamage = 0;
             for (int i = 0; i < pens; i++)

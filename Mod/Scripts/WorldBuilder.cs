@@ -26,7 +26,7 @@ namespace SnakefangoxAstralMedusae
             BuildManubriumTrail(highSkyZoneID);
 
             string medusaeZoneID = The.ZoneManager.GetZoneFromIDAndDirection(highSkyZoneID, "U");
-            for (int i = 1; i <= 3; i++)
+            for (int i = 1; i <= 2; i++)
             {
                 BuildMedusaeBody(medusaeZoneID, i);
                 medusaeZoneID = The.ZoneManager.GetZoneFromIDAndDirection(medusaeZoneID, "U");

@@ -31,13 +31,10 @@ namespace XRL.World.Parts
                 return base.HandleEvent(E);
             }
 
-            if (!obj.MakeSave("Willpower", Difficulty, Attacker: ParentObject))
+            if (obj.HasEffect("Stun") || !obj.MakeSave("Willpower", Difficulty, Attacker: ParentObject))
             {
                 obj.ApplyEffect(new Stun(5, Difficulty));
-            }
 
-            if (!obj.MakeSave("Strength", Difficulty, Attacker: ParentObject))
-            {
                 Cell destCell = ParentObject.CurrentCell.GetCellFromDirection("U", BuiltOnly: false);
                 obj.SystemMoveTo(destCell, forced: true);
 

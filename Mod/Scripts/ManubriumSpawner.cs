@@ -26,7 +26,7 @@ namespace XRL.World.Parts
                 Random rand = Utilities.GameRandom();
 
                 Point2D center = zone.GetCenterCell().location.Point;
-                Point2D[] cardinals = new Point2D[] { center + new Point2D(7, 0), center + new Point2D(-7, 0), center + new Point2D(0, 7), center + new Point2D(0, -7), };
+                Point2D[] cardinals = new Point2D[] { center + new Point2D(8, 0), center + new Point2D(-8, 0), center + new Point2D(0, 7), center + new Point2D(0, -7), };
 
                 foreach (Cell c in zone.GetCells())
                 {
