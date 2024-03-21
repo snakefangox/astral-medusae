@@ -10,7 +10,7 @@ namespace XRL.World.Parts
 
         public override bool WantEvent(int ID, int cascade)
         {
-            if (base.WantEvent(ID, cascade) || ID == GetNavigationWeightEvent.ID || ID == ObjectEnteredCellEvent.ID)
+            if (base.WantEvent(ID, cascade) || ID == GetNavigationWeightEvent.ID || ID == EndTurnEvent.ID)
             {
                 return true;
             }
@@ -24,17 +24,24 @@ namespace XRL.World.Parts
             return base.HandleEvent(E);
         }
 
-        public override bool HandleEvent(ObjectEnteredCellEvent E)
+        public override bool HandleEvent(EndTurnEvent E)
         {
-            var obj = E.Object;
-            if (obj.HasPart(GetType())) {
+            GameObject obj = null;
+            foreach (var o in ParentObject.CurrentCell.Objects)
+            {
+                if (!o.HasPart(GetType()))
+                {
+                    obj = o;
+                }
+            }
+
+            if (obj == null)
+            {
                 return base.HandleEvent(E);
             }
 
-            if (obj.HasEffect("Stun") || !obj.MakeSave("Willpower", Difficulty, Attacker: ParentObject))
+            if (obj.HasEffect("Stun"))
             {
-                obj.ApplyEffect(new Stun(5, Difficulty));
-
                 Cell destCell = ParentObject.CurrentCell.GetCellFromDirection("U", BuiltOnly: false);
                 obj.SystemMoveTo(destCell, forced: true);
 
@@ -43,6 +50,10 @@ namespace XRL.World.Parts
                     ZoneManager.ZoneTransitionCount -= 1;
                     AddPlayerMessage("You are grabbed and pulled upwards!");
                 }
+            }
+            else if (!obj.MakeSave("Willpower", Difficulty, Attacker: ParentObject))
+            {
+                obj.ApplyEffect(new Stun(5, Difficulty));
             }
 
             return base.HandleEvent(E);

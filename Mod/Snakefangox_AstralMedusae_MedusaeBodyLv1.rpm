@@ -314,27 +314,21 @@
   </cell>
   <cell X="37" Y="2">
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor"></object>
-    <object Name="Snakefangox_AstralMedusae_MedusaeCili"></object>
   </cell>
   <cell X="38" Y="2">
-    <object Name="Snakefangox_AstralMedusae_MedusaeCili"></object>
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor"></object>
   </cell>
   <cell X="39" Y="2">
-    <object Name="Snakefangox_AstralMedusae_MedusaeCili"></object>
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor"></object>
   </cell>
   <cell X="40" Y="2">
-    <object Name="Snakefangox_AstralMedusae_MedusaeCili"></object>
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor"></object>
   </cell>
   <cell X="41" Y="2">
-    <object Name="Snakefangox_AstralMedusae_MedusaeCili"></object>
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor"></object>
   </cell>
   <cell X="42" Y="2">
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor"></object>
-    <object Name="Snakefangox_AstralMedusae_MedusaeCili"></object>
   </cell>
   <cell X="43" Y="2">
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor"></object>
@@ -442,6 +436,7 @@
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor"></object>
   </cell>
   <cell X="32" Y="3">
+    <object Name="StairsUp"></object>
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor"></object>
   </cell>
   <cell X="33" Y="3">
@@ -455,7 +450,6 @@
   </cell>
   <cell X="36" Y="3">
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor"></object>
-    <object Name="Snakefangox_AstralMedusae_MedusaeCili"></object>
   </cell>
   <cell X="37" Y="3">
     <object Name="Snakefangox_AstralMedusae_MedusaeCili"></object>
@@ -483,7 +477,6 @@
   </cell>
   <cell X="43" Y="3">
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor"></object>
-    <object Name="Snakefangox_AstralMedusae_MedusaeCili"></object>
   </cell>
   <cell X="44" Y="3">
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor"></object>
@@ -496,6 +489,7 @@
   </cell>
   <cell X="47" Y="3">
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor"></object>
+    <object Name="StairsUp"></object>
   </cell>
   <cell X="48" Y="3">
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor"></object>
@@ -760,6 +754,7 @@
   </cell>
   <cell X="36" Y="5">
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor"></object>
+    <object Name="Snakefangox_AstralMedusae_MedusaeCili"></object>
   </cell>
   <cell X="37" Y="5">
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor"></object>
@@ -787,6 +782,7 @@
   </cell>
   <cell X="43" Y="5">
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor"></object>
+    <object Name="Snakefangox_AstralMedusae_MedusaeCili"></object>
   </cell>
   <cell X="44" Y="5">
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor"></object>
@@ -919,21 +915,27 @@
   </cell>
   <cell X="37" Y="6">
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor"></object>
+    <object Name="Snakefangox_AstralMedusae_MedusaeCili"></object>
   </cell>
   <cell X="38" Y="6">
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor"></object>
+    <object Name="Snakefangox_AstralMedusae_MedusaeCili"></object>
   </cell>
   <cell X="39" Y="6">
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor"></object>
+    <object Name="Snakefangox_AstralMedusae_MedusaeCili"></object>
   </cell>
   <cell X="40" Y="6">
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor"></object>
+    <object Name="Snakefangox_AstralMedusae_MedusaeCili"></object>
   </cell>
   <cell X="41" Y="6">
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor"></object>
+    <object Name="Snakefangox_AstralMedusae_MedusaeCili"></object>
   </cell>
   <cell X="42" Y="6">
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor"></object>
+    <object Name="Snakefangox_AstralMedusae_MedusaeCili"></object>
   </cell>
   <cell X="43" Y="6">
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor"></object>
@@ -1838,6 +1840,7 @@
   </cell>
   <cell X="23" Y="12">
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor"></object>
+    <object Name="StairsUp"></object>
   </cell>
   <cell X="24" Y="12">
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor"></object>
@@ -1893,11 +1896,9 @@
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor"></object>
   </cell>
   <cell X="39" Y="12">
-    <object Name="StairsUp"></object>
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor"></object>
   </cell>
   <cell X="40" Y="12">
-    <object Name="StairsUp"></object>
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor"></object>
   </cell>
   <cell X="41" Y="12">
@@ -1955,6 +1956,7 @@
   </cell>
   <cell X="56" Y="12">
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor"></object>
+    <object Name="StairsUp"></object>
   </cell>
   <cell X="57" Y="12">
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor"></object>
@@ -3306,6 +3308,7 @@
   </cell>
   <cell X="32" Y="21">
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor"></object>
+    <object Name="StairsUp"></object>
   </cell>
   <cell X="33" Y="21">
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor"></object>
@@ -3357,6 +3360,7 @@
   </cell>
   <cell X="47" Y="21">
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor"></object>
+    <object Name="StairsUp"></object>
   </cell>
   <cell X="48" Y="21">
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor"></object>
