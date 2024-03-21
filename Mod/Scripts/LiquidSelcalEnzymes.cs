@@ -71,8 +71,8 @@ namespace XRL.Liquids
 
         public override bool Drank(LiquidVolume Liquid, int Volume, GameObject Target, StringBuilder Message, ref bool ExitInterface)
         {
-            Message.Compound("Your vision {{snakefangox_astralmedusae_enzymic|shatters}}");
-            RendMind(Liquid, Target, By: Target);
+            Message.Compound("Your mind crystallizes and {{snakefangox_astralmedusae_enzymic|shatters}}");
+            RendMind(Liquid, Target, By: Target, "4d10");
             ExitInterface = true;
             return true;
         }
@@ -83,14 +83,14 @@ namespace XRL.Liquids
             RendMind(Liquid, Target, By);
         }
 
-        private static void RendMind(LiquidVolume Liquid, GameObject Target, GameObject By = null)
+        private static void RendMind(LiquidVolume Liquid, GameObject Target, GameObject By = null, string dice = "2d4")
         {
             int pv = Liquid.GetLiquidExposureMillidrams(Target, "selcalenzymes") / 500;
             int pens = Stat.RollDamagePenetrations(Stats.GetCombatMA(Target), pv, pv);
             int totalDamage = 0;
             for (int i = 0; i < pens; i++)
             {
-                totalDamage += "2d4".RollCached();
+                totalDamage += dice.RollCached();
             }
 
             Target.TakeDamage(totalDamage, "from {{snakefangox_astralmedusae_enzymic|selcalic enzymes}}!", "Mental Psionic", Attacker: By ?? Liquid.ParentObject);
@@ -127,49 +127,6 @@ namespace XRL.Liquids
                 }
             }
             base.RenderSmearPrimary(Liquid, eRender, obj);
-        }
-
-        public override void RenderPrimary(LiquidVolume Liquid, RenderEvent eRender)
-        {
-            if (!Liquid.IsWadingDepth())
-            {
-                return;
-            }
-            if (Liquid.ParentObject.IsFrozen())
-            {
-                eRender.RenderString = "~";
-                eRender.TileVariantColors("&G^m", "&G", "m");
-                return;
-            }
-            Render pRender = Liquid.ParentObject.pRender;
-            int num = (XRLCore.CurrentFrame + Liquid.FrameOffset) % 60;
-            if (Stat.RandomCosmetic(1, 600) == 1)
-            {
-                eRender.RenderString = "\u000f";
-                eRender.TileVariantColors("&G^m", "&G", "m");
-            }
-            if (Stat.RandomCosmetic(1, 60) == 1)
-            {
-                pRender.ColorString = "&G^m";
-                pRender.TileColor = "&G";
-                pRender.DetailColor = "m";
-                if (num < 15)
-                {
-                    pRender.RenderString = "?";
-                }
-                else if (num < 30)
-                {
-                    pRender.RenderString = "~";
-                }
-                else if (num < 45)
-                {
-                    pRender.RenderString = "*";
-                }
-                else
-                {
-                    pRender.RenderString = "^";
-                }
-            }
         }
 
         public override void RenderSecondary(LiquidVolume Liquid, RenderEvent eRender)
