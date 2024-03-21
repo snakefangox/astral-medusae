@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<objects>
-  <object Name="Snakefangox_AstralMedusae_ManubriumSpawner" Inherits="Widget">
-    <part Name="Snakefangox_AstralMedusae_ManubriumSpawner" />
-  </object>
-</objects>
