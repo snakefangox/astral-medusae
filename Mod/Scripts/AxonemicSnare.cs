@@ -1,9 +1,6 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using XRL.Rules;
 using XRL.UI;
-using XRL.World.Effects;
 
 namespace XRL.World.Parts.Mutation
 {
