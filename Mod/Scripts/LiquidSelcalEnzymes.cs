@@ -84,6 +84,8 @@ namespace XRL.Liquids
             if (Target.HasStat("Ego"))
             {
                 RendMind(Liquid, Target, By);
+            } else if (Target.HasTag("Corpse")) {
+                Target.Destroy();
             }
         }
 

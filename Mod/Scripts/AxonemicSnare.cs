@@ -22,10 +22,11 @@ namespace XRL.World.Parts.Mutation
 
         public override string GetLevelText(int Level)
         {
-            string text = "Pulls all creatures in an area into your space-pocket.\n";
+            string text = "Pulls all creatures in an area into your guts.\n";
             int num = Math.Max(5, 120 - 10 * Level);
             text = text + "Cooldown: {{rules|" + num + "}} rounds\n";
-            text = text + "Range: {{rules|" + (Level + 5) + "}}";
+            text = text + "Radius: {{rules|" + (Level + 2) + "}}\n";
+            text = text + "Range: {{rules|" + (Level * 5) + "}}";
             return text;
         }
 
@@ -80,20 +81,20 @@ namespace XRL.World.Parts.Mutation
                     return false;
                 }
 
-                var cone = PickCone(Level + 5, 45 + (Level * 5), Label: DisplayName);
-                if (cone == null)
+                var circle = PickCircle(Level + 2, Range: Level * 5, VisLevel: AllowVis.OnlyVisible, Label: DisplayName);
+                if (circle == null)
                 {
                     return false;
                 }
 
                 Interior interior = ParentObject.GetPart<Interior>();
-                Event e = Event.New("InitiateRealityDistortionTransit", "Object", ParentObject, "Mutation", this, "Cell", cone.First());
+                Event e = Event.New("InitiateRealityDistortionTransit", "Object", ParentObject, "Mutation", this, "Cell", circle.First());
                 if (!ParentObject.FireEvent(e, E))
                 {
                     return false;
                 }
 
-                foreach (var cell in cone)
+                foreach (var cell in circle)
                 {
                     e.SetParameter("Cell", cell);
                     if (cell.FireEvent(e, E))

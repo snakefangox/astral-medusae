@@ -99,5 +99,6 @@
         <part Name="Snakefangox_AstralMedusae_LiquidFilter" FilterLiquid="rawego" />
         <!-- Extra fancy stuff -->
         <mutation Name="Snakefangox_AstralMedusae_AxonemicSnare" />
+        <part Name="Snakefangox_AstralMedusae_CopyPilotMutations" />
     </object>
 </objects>
