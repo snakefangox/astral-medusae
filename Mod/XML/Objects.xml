@@ -68,7 +68,7 @@
         <part Name="Interior" Cell="Snakefangox_AstralMedusae_AstralPlanulaMain" FallDistance="1" />
         <part Name="Vehicle" ChargeMinimum="1000" Type="Medusae" Autonomous="false" IsEMPSensitive="false" IsTechScannable="false" />
         <part Name="ActionChargeCost" Percentage="50" />
-        <part Name="LiquidVolume" MaxVolume="32" Volume="0" StartVolume="8-16" InitialLiquid="rawego-1000" />
+        <part Name="LiquidVolume" MaxVolume="128" Volume="0" StartVolume="32-64" InitialLiquid="rawego-1000" />
         <part Name="LiquidFueledEnergyCell" Liquid="rawego" ChargePerDram="15000" />
         <part Name="Snakefangox_AstralMedusae_LiquidFilter" FilterLiquid="rawego" />
         <!-- Extra fancy stuff -->

@@ -1,9 +1,11 @@
 using System;
 using System.Text;
+using System.Web.UI.WebControls.WebParts;
 using XRL.Core;
 using XRL.Rules;
 using XRL.UI;
 using XRL.World;
+using XRL.World.Anatomy;
 using XRL.World.Capabilities;
 using XRL.World.Parts;
 
@@ -106,8 +108,11 @@ namespace XRL.Liquids
 
                 if (Target.IsPlayer())
                 {
-                    // TODO: What if I don't have legs?
-                    Popup.Show("You feel your ego pour from your skull and run down your legs.");
+                    string lastLegBit = "legs";
+                    foreach (BodyPart bodyPart in Target.Body.GetParts()) {
+                        if (bodyPart.VariantTypeModel().Mobility > 0) lastLegBit = bodyPart.Name;
+                    }
+                    Popup.Show($"You feel your ego pour from your skull and run down your {lastLegBit}.");
                 }
             }
             Target.TakeDamage(totalDamage, "from {{snakefangox_astralmedusae_enzymic|selcalic enzymes}}!", "Mental Psionic", Attacker: By ?? Liquid.ParentObject);
