@@ -67,10 +67,10 @@
             Messages="Beguiling::The place where a mind should be is blank and smooth in =subject.t=.;;Persuasion_Proselytize::=subject.T's= commitment to =pronouns.possessive= cause is unwavering.;;LoveTonicApplicator::The tonic has no effect on =subject.t=.;;default::=subject.T= =verb:are= insensible to your blandishments." />
         <part Name="Interior" Cell="Snakefangox_AstralMedusae_AstralPlanulaMain" FallDistance="1" />
         <part Name="Vehicle" ChargeMinimum="1000" Type="Medusae" Autonomous="false" IsEMPSensitive="false" IsTechScannable="false" />
-        <part Name="EnergyCellSocket" ChanceSlotted="100" SlotType="PowerCore" SlottedType="@DynamicInheritsTable:PowerCore:Tier{zonetier}"
-            VisibleInDisplayName="false" VisibleInDescription="true" />
         <part Name="ActionChargeCost" Percentage="50" />
-        <part Name="EnergyCellChargeLevel" ChargeMinimum="1000" VeryLow="low power:Nearly drained of core power." />
+        <part Name="LiquidVolume" MaxVolume="32" Volume="0" StartVolume="8-16" InitialLiquid="rawego-1000" />
+        <part Name="LiquidFueledEnergyCell" Liquid="rawego" ChargePerDram="15000" />
+        <part Name="Snakefangox_AstralMedusae_LiquidFilter" FilterLiquid="rawego" />
         <!-- Extra fancy stuff -->
         <mutation Name="AxonemicSnare" />
     </object>

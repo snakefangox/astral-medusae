@@ -10,7 +10,7 @@ namespace XRL.World.Parts.Mutation
         public AxonemicSnare()
         {
             DisplayName = "Axonemic Snare";
-            base.Type = "Mental";
+            Type = "Mental";
         }
 
         public override string GetDescription()

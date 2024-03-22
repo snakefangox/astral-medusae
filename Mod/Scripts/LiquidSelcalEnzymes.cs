@@ -23,9 +23,10 @@ namespace XRL.Liquids
             ConsiderDangerousToContact = true;
             ConsiderDangerousToDrink = true;
             StickyWhenWet = true;
-            StickySaveTargetBase = 4;
+            StickySaveTargetBase = 10;
             StickySaveTargetScale = 0.1;
-            StickyDuration = 12;
+            StickyDuration = 5;
+            StickySaveStat = "Willpower";
             StickySaveVs = "Selcal Enzymes Stuck Restraint";
         }
 
@@ -71,7 +72,7 @@ namespace XRL.Liquids
 
         public override bool Drank(LiquidVolume Liquid, int Volume, GameObject Target, StringBuilder Message, ref bool ExitInterface)
         {
-            Message.Compound("Your mind crystallizes and {{snakefangox_astralmedusae_enzymic|shatters}}");
+            Message.Compound("You feel like your mind is pouring through your skull.");
             RendMind(Liquid, Target, By: Target, "4d10");
             ExitInterface = true;
             return true;
@@ -80,12 +81,15 @@ namespace XRL.Liquids
         public override void SmearOnTick(LiquidVolume Liquid, GameObject Target, GameObject By, bool FromCell)
         {
             base.SmearOnTick(Liquid, Target, By, FromCell);
-            RendMind(Liquid, Target, By);
+            if (Target.HasStat("Ego"))
+            {
+                RendMind(Liquid, Target, By);
+            }
         }
 
         private static void RendMind(LiquidVolume Liquid, GameObject Target, GameObject By = null, string dice = "2d4")
         {
-            int pv = Liquid.GetLiquidExposureMillidrams(Target, "selcalenzymes") / 500;
+            int pv = Liquid.GetLiquidExposureMillidrams(Target, "selcalenzymes") / 400;
             int pens = Stat.RollDamagePenetrations(Stats.GetCombatMA(Target), pv, pv);
             int totalDamage = 0;
             for (int i = 0; i < pens; i++)
@@ -93,6 +97,19 @@ namespace XRL.Liquids
                 totalDamage += dice.RollCached();
             }
 
+            if (!Target.MakeSave("Willpower", totalDamage, Attacker: By ?? Liquid.ParentObject))
+            {
+                int ego = Target.GetStatValue("Ego");
+                int egoLoss = Math.Min("1d6".Roll(), ego);
+                Target.AddBaseStat("Ego", -egoLoss);
+                Liquid.AddDrams("rawego", egoLoss);
+
+                if (Target.IsPlayer())
+                {
+                    // TODO: What if I don't have legs?
+                    Popup.Show("You feel your ego pour from your skull and run down your legs.");
+                }
+            }
             Target.TakeDamage(totalDamage, "from {{snakefangox_astralmedusae_enzymic|selcalic enzymes}}!", "Mental Psionic", Attacker: By ?? Liquid.ParentObject);
         }
 

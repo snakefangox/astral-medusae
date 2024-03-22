@@ -2,5 +2,6 @@
 <colors>
     <shaders>
         <shader Name="snakefangox_astralmedusae_enzymic" Type="sequence" Colors="G-g-m-M-m-g-G" ShowInPicker="false" />
+        <shader Name="snakefangox_astralmedusae_egotistic" Type="sequence" Colors="M-m-c-C-c-m-M" ShowInPicker="false" />
     </shaders>
 </colors>
