@@ -23,17 +23,13 @@
             Tile="Snakefangox_AstralMedusae/EnzymeCoatedVilli.png" Occluding="false" />
         <part Name="Description"
             Short="Waving fronds of flesh peel from the floor, awash in gastro-enzymes that threaten to tear themselves across your perception." />
-        <mutation Name="LiquidFont" Liquid="selcalenzymes" Amount="5-8" MaxAmount="8" MaxRadius="2" Cooldown="3000-4000" Chance="50" />
+        <mutation Name="LiquidFont" Liquid="selcalenzymes" Amount="1" MaxAmount="8" MaxRadius="2" Cooldown="500-1000" Chance="50" />
         <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
         <xtagGrammar massNoun="true" />
     </object>
 
     <object Name="Snakefangox_AstralMedusae_MedusaeFloor" Inherits="Floor">
-        <part Name="Render" DisplayName="[Ground]" RenderString="." RenderLayer="0" RenderIfDark="true" ColorString="&amp;r" DetailColor="m"
-            Tile="Snakefangox_AstralMedusae/MedusaeFloor.png" />
-        <part Name="Physics" Solid="false" Takeable="false" Weight="-1" FreezeTemperature="-9999" BrittleTemperature="-9999" FlameTemperature="99999"
-            VaporTemperature="9999" />
-        <tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
+        <part Name="Render" ColorString="&amp;r" DetailColor="m" Tile="Snakefangox_AstralMedusae/MedusaeFloor.png" />
     </object>
 
     <object Name="Snakefangox_AstralMedusae_MedusaeShipHull" Inherits="BaseWallCyber">
@@ -44,13 +40,35 @@
         <removepart Name="Graffitied" />
     </object>
 
+    <object Name="Snakefangox_AstralMedusae_PlanulaMembrane" Inherits="Snakefangox_AstralMedusae_MedusaeShipHull">
+        <part Name="Render" DisplayName="slick alien membrane" ColorString="&amp;K^R" TileColor="&amp;K" DetailColor="R"
+            Tile="Snakefangox_AstralMedusae/PlanulaMembrane.png" />
+        <part Name="Description"
+            Short="A taut membrane seperates master and food." />
+        <part Name="Snakefangox_AstralMedusae_OwnerAccess" />
+    </object>
+
     <object Name="Snakefangox_AstralMedusae_ManubriumSpawner" Inherits="Widget">
         <part Name="Snakefangox_AstralMedusae_ManubriumSpawner" />
     </object>
 
+    <object Name="Snakefangox_AstralMedusae_AstralPlanulaExitHatch" Inherits="VehicleGolemExit">
+        <part Name="Render" DisplayName="exit gate" RenderLayer="1" ColorString="&amp;r" TileColor="&amp;r" DetailColor="w"
+            Tile="Snakefangox_AstralMedusae/AstralPlanulaExitHatch.png" />
+        <part Name="Description"
+            Short="Flesh slides apart to reveal a space beyond space." />
+    </object>
+
+    <object Name="Snakefangox_AstralMedusae_AstralPlanulaPilotPod" Inherits="VehicleGolemSeat">
+        <part Name="Render" DisplayName="control lattice" ColorString="&amp;C" TileColor="&amp;C" DetailColor="m"
+            Tile="Snakefangox_AstralMedusae/AstralPlanulaPilotPod.png" />
+        <part Name="Description"
+            Short="Tendrils unfurl from the floor, slick with nuero-conductive fluid and heavy with conferred authority." />
+    </object>
+
     <object Name="Snakefangox_AstralMedusae_AstralPlanula" Inherits="Creature">
         <!-- Details -->
-        <part Name="Render" DisplayName="astral planuliform" ColorString="&amp;C" TileColor="&amp;C" DetailColor="m"
+        <part Name="Render" DisplayName="astral planuliform" ColorString="&amp;b" TileColor="&amp;b" DetailColor="m"
             Tile="Snakefangox_AstralMedusae/AstralPlanula.png" />
         <part Name="Description"
             Short="A blunt form, resplendent with gravity and purpose, =pronouns.possessive= cilia ripple as they push against unseen currents. No mouth is visible on =pronouns.possessive= body, but as =pronouns.possessive= eye makes contact you feel a sickening tug." />
@@ -60,18 +78,26 @@
         <part Name="Brain" Factions="Playerneutral-100" />
         <stat Name="Level" Value="40" />
         <stat Name="AV" Value="12" />
+        <stat Name="DV" Value="14" />
         <stat Name="MA" Value="10" />
+        <stat Name="Strength" sValue="15,1d4,(t-1)d3" />
+        <stat Name="Agility" sValue="15,1d3,(t-1)d1" />
+        <stat Name="Toughness" sValue="20,1d4,(t-1)d3" />
+        <stat Name="Intelligence" sValue="8,1d3,(t-1)d1" />
+        <stat Name="Willpower" sValue="25,1d4,(t-1)d3" />
+        <stat Name="Ego" sValue="30,1d2,(t-1)d2-1" />
         <stat Name="Hitpoints" Value="250" />
         <!-- Vehicle stuff -->
         <part Name="CannotBeInfluenced"
             Messages="Beguiling::The place where a mind should be is blank and smooth in =subject.t=.;;Persuasion_Proselytize::=subject.T's= commitment to =pronouns.possessive= cause is unwavering.;;LoveTonicApplicator::The tonic has no effect on =subject.t=.;;default::=subject.T= =verb:are= insensible to your blandishments." />
-        <part Name="Interior" Cell="Snakefangox_AstralMedusae_AstralPlanulaMain" FallDistance="1" />
-        <part Name="Vehicle" ChargeMinimum="1000" Type="Medusae" Autonomous="false" IsEMPSensitive="false" IsTechScannable="false" />
+        <part Name="Interior" Cell="Snakefangox_AstralMedusae_AstralPlanula" FallDistance="1" />
+        <part Name="Vehicle" ChargeMinimum="1000" Type="Medusae" BindBlueprint="Glowsphere" Autonomous="false" IsEMPSensitive="false"
+            IsTechScannable="false" />
         <part Name="ActionChargeCost" Percentage="50" />
         <part Name="LiquidVolume" MaxVolume="128" Volume="0" StartVolume="32-64" InitialLiquid="rawego-1000" />
         <part Name="LiquidFueledEnergyCell" Liquid="rawego" ChargePerDram="15000" />
         <part Name="Snakefangox_AstralMedusae_LiquidFilter" FilterLiquid="rawego" />
         <!-- Extra fancy stuff -->
-        <mutation Name="AxonemicSnare" />
+        <mutation Name="Snakefangox_AstralMedusae_AxonemicSnare" />
     </object>
 </objects>

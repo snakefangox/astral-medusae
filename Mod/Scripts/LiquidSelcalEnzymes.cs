@@ -1,12 +1,10 @@
 using System;
 using System.Text;
-using System.Web.UI.WebControls.WebParts;
 using XRL.Core;
 using XRL.Rules;
 using XRL.UI;
 using XRL.World;
 using XRL.World.Anatomy;
-using XRL.World.Capabilities;
 using XRL.World.Parts;
 
 namespace XRL.Liquids
@@ -74,7 +72,7 @@ namespace XRL.Liquids
 
         public override bool Drank(LiquidVolume Liquid, int Volume, GameObject Target, StringBuilder Message, ref bool ExitInterface)
         {
-            Message.Compound("You feel like your mind is pouring through your skull.");
+            Message.Compound("");
             RendMind(Liquid, Target, By: Target, "4d10");
             ExitInterface = true;
             return true;
@@ -91,7 +89,7 @@ namespace XRL.Liquids
 
         private static void RendMind(LiquidVolume Liquid, GameObject Target, GameObject By = null, string dice = "2d4")
         {
-            int pv = Liquid.GetLiquidExposureMillidrams(Target, "selcalenzymes") / 400;
+            int pv = Liquid.GetLiquidExposureMillidrams(Target, "selcalenzymes") / 500;
             int pens = Stat.RollDamagePenetrations(Stats.GetCombatMA(Target), pv, pv);
             int totalDamage = 0;
             for (int i = 0; i < pens; i++)
@@ -108,13 +106,14 @@ namespace XRL.Liquids
 
                 if (Target.IsPlayer())
                 {
-                    string lastLegBit = "legs";
+                    string lastBackBit = "back";
                     foreach (BodyPart bodyPart in Target.Body.GetParts()) {
-                        if (bodyPart.VariantTypeModel().Mobility > 0) lastLegBit = bodyPart.Name;
+                        if (bodyPart.VariantType == "Back") lastBackBit = bodyPart.Name.ToLower();
                     }
-                    Popup.Show($"You feel your ego pour from your skull and run down your {lastLegBit}.");
+                    Popup.Show($"You feel your ego pour from your skull and run down your {lastBackBit}.");
                 }
             }
+
             Target.TakeDamage(totalDamage, "from {{snakefangox_astralmedusae_enzymic|selcalic enzymes}}!", "Mental Psionic", Attacker: By ?? Liquid.ParentObject);
         }
 

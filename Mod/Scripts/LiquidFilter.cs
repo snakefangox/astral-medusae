@@ -27,20 +27,20 @@ namespace XRL.World.Parts
 
         public override void TurnTick(long TurnNumber)
         {
-            Process(1);
+            Process();
         }
 
         public override void TenTurnTick(long TurnNumber)
         {
-            Process(10);
+            Process();
         }
 
         public override void HundredTurnTick(long TurnNumber)
         {
-            Process(100);
+            Process();
         }
 
-        public void Process(int turns)
+        public void Process()
         {
             LiquidVolume volume = ParentObject.LiquidVolume;
             if (volume == null) { return; }

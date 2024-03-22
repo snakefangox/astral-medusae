@@ -15,6 +15,7 @@ namespace XRL.Liquids
         public LiquidEgo() : base(ID)
         {
             VaporTemperature = 1000;
+            Weight = 0.01;
             Glows = true;
         }
 
@@ -67,7 +68,7 @@ namespace XRL.Liquids
             }
             else
             {
-                Message.Compound("You taste a hint of greatness, but nothing happens");
+                Message.Compound("You taste a hint of greatness, but nothing more.");
             }
 
             ExitInterface = true;
@@ -104,6 +105,7 @@ namespace XRL.Liquids
                     eRender.ColorString = "&C";
                 }
             }
+
             base.RenderSmearPrimary(Liquid, eRender, obj);
         }
 
