@@ -104,7 +104,7 @@ namespace XRL.Liquids
                 int ego = Target.GetStatValue("Ego");
                 int egoLoss = Math.Min("1d6".Roll(), ego);
                 Target.AddBaseStat("Ego", -egoLoss);
-                Liquid.AddDrams("rawego", egoLoss);
+                Liquid.AddDrams("rawego", egoLoss * 10);
 
                 if (Target.IsPlayer())
                 {
