@@ -72,8 +72,8 @@ namespace XRL.Liquids
 
         public override bool Drank(LiquidVolume Liquid, int Volume, GameObject Target, StringBuilder Message, ref bool ExitInterface)
         {
-            Message.Compound("");
-            RendMind(Liquid, Target, By: Target, "4d10");
+            Message.Compound("The thought-stuff running down your back thinks this was a bad idea.");
+            RendMind(Liquid, Target, By: Target, "4d10", NoSave: true);
             ExitInterface = true;
             return true;
         }
@@ -89,7 +89,7 @@ namespace XRL.Liquids
             }
         }
 
-        private static void RendMind(LiquidVolume Liquid, GameObject Target, GameObject By = null, string dice = "2d4")
+        private static void RendMind(LiquidVolume Liquid, GameObject Target, GameObject By = null, string dice = "2d4", bool NoSave = false)
         {
             int pv = Liquid.GetLiquidExposureMillidrams(Target, "selcalenzymes") / 500;
             int pens = Stat.RollDamagePenetrations(Stats.GetCombatMA(Target), pv, pv);
@@ -99,14 +99,14 @@ namespace XRL.Liquids
                 totalDamage += dice.RollCached();
             }
 
-            if (!Target.MakeSave("Willpower", totalDamage, Attacker: By ?? Liquid.ParentObject))
+            if (NoSave || !Target.MakeSave("Willpower", totalDamage, Attacker: By ?? Liquid.ParentObject))
             {
                 int ego = Target.GetStatValue("Ego");
                 int egoLoss = Math.Min("1d6".Roll(), ego);
                 Target.AddBaseStat("Ego", -egoLoss);
                 Liquid.AddDrams("rawego", egoLoss * 10);
 
-                if (Target.IsPlayer())
+                if (Target.IsPlayer() && !NoSave)
                 {
                     string lastBackBit = "back";
                     foreach (BodyPart bodyPart in Target.Body.GetParts()) {

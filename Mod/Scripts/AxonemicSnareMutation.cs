@@ -23,9 +23,9 @@ namespace XRL.World.Parts.Mutation
         public override string GetLevelText(int Level)
         {
             string text = "Pulls all creatures in an area into your guts.\n";
-            int num = Math.Max(5, 120 - 10 * Level);
+            int num = Math.Max(5, 550 - 10 * Level);
             text = text + "Cooldown: {{rules|" + num + "}} rounds\n";
-            text = text + "Radius: {{rules|" + (Level + 2) + "}}\n";
+            text = text + "Radius: {{rules|" + (Level + 1) + "}}\n";
             text = text + "Range: {{rules|" + (Level * 5) + "}}";
             return text;
         }
@@ -81,7 +81,7 @@ namespace XRL.World.Parts.Mutation
                     return false;
                 }
 
-                var circle = PickCircle(Level + 2, Range: Level * 5, VisLevel: AllowVis.OnlyVisible, Label: DisplayName);
+                var circle = PickCircle(Level + 1, Range: Level * 5, VisLevel: AllowVis.OnlyVisible, Label: DisplayName);
                 if (circle == null)
                 {
                     return false;
@@ -107,14 +107,14 @@ namespace XRL.World.Parts.Mutation
                             if (!obj.HasStat("Ego")) continue;
 
                             // 38, 12
-                            obj.TeleportSwirl(Color: "&M", Voluntary: false, Char: 'ù', IsOut: true);
+                            obj.TeleportSwirl(Color: "&M", Voluntary: false, IsOut: true);
                             obj.CellTeleport(interior.Zone.GetCell(38, 12), Mutation: this);
                         }
                     }
                 }
             }
 
-            int turns = Math.Max(5, 120 - 10 * Level);
+            int turns = Math.Max(5, 550 - 10 * Level);
             CooldownMyActivatedAbility(ActivatedAbilityID, turns);
             UseEnergy(1000, "Mental Mutation AxonemicSnare");
             return base.FireEvent(E);

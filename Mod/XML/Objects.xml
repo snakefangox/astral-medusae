@@ -52,6 +52,30 @@
         <part Name="Snakefangox_AstralMedusae_ManubriumSpawner" />
     </object>
 
+    <object Name="Snakefangox_AstralMedusae_OuterGanglion" Inherits="Snack">
+        <part Name="Render" DisplayName="{{snakefangox_astralmedusae_medusic|outer ganglion}}" ColorString="&amp;C" DetailColor="m"
+            Tile="Snakefangox_AstralMedusae/OuterGanglion.png" />
+        <part Name="Physics" Weight="100" />
+        <part Name="Commerce" Value="500" />
+        <part Name="Unreplicable" />
+        <part Name="Description"
+            Short="Thin dendrites grasp outwards from an inexplicably heavy mass of alien brain matter, they roam as if in search of something. They grasp, perhaps for their progeny, perhaps for you." />
+        <part Name="Snakefangox_AstralMedusae_MedusicTransformation" />
+    </object>
+
+    <object Name="Snakefangox_AstralMedusae_Macrophage" Inherits="BaseOoze">
+        <part Name="Render" DisplayName="macrophage" Tile="Creatures/sw_frustum.bmp" RenderString="J" ColorString="&amp;y" DetailColor="C" />
+        <part Name="Description"
+            Short="Operating on millennia of inborn instinct, your hunter cells traverse with a keen efficiency." />
+        <stat Name="Level" Value="18" />
+        <part Name="Engulfing" />
+        <part Name="EngulfingDamage" Amount="12-18" />
+        <part Name="EngulfingWanders" />
+        <stat Name="AV" Value="6" />
+        <stat Name="Hitpoints" Value="85" />
+        <part Name="Temporary" Duration="500" />
+    </object>
+
     <object Name="Snakefangox_AstralMedusae_AstralPlanulaExitHatch" Inherits="VehicleGolemExit">
         <part Name="Render" DisplayName="exit gate" RenderLayer="1" ColorString="&amp;r" TileColor="&amp;r" DetailColor="w"
             Tile="Snakefangox_AstralMedusae/AstralPlanulaExitHatch.png" />
@@ -91,8 +115,8 @@
         <part Name="CannotBeInfluenced"
             Messages="Beguiling::The place where a mind should be is blank and smooth in =subject.t=.;;Persuasion_Proselytize::=subject.T's= commitment to =pronouns.possessive= cause is unwavering.;;LoveTonicApplicator::The tonic has no effect on =subject.t=.;;default::=subject.T= =verb:are= insensible to your blandishments." />
         <part Name="Interior" Cell="Snakefangox_AstralMedusae_AstralPlanula" FallDistance="1" />
-        <part Name="Vehicle" ChargeMinimum="1000" Type="Medusae" BindBlueprint="Glowsphere" Autonomous="false" IsEMPSensitive="false"
-            IsTechScannable="false" />
+        <part Name="Vehicle" ChargeMinimum="1000" Type="Medusae" BindBlueprint="Snakefangox_AstralMedusae_OuterGanglion" Autonomous="false"
+            IsEMPSensitive="false" IsTechScannable="false" />
         <part Name="ActionChargeCost" Percentage="50" />
         <part Name="LiquidVolume" MaxVolume="128" Volume="0" StartVolume="32-64" InitialLiquid="rawego-1000" />
         <part Name="LiquidFueledEnergyCell" Liquid="rawego" ChargePerDram="15000" />
